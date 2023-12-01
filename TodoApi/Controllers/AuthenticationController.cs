@@ -83,7 +83,7 @@ namespace TodoApi.Controllers
             return null;
         }
 
-        public bool CompareValues(string? actual, string expected)
+        private bool CompareValues(string? actual, string expected)
         {
             if (actual is not null)
             {
