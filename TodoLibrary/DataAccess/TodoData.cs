@@ -13,14 +13,14 @@ namespace TodoLibrary.DataAccess
 
         public Task<List<TodoModel>> GetAllAssigned(int assignedTo)
         {
-            return sql.LoadData<TodoModel, dynamic>("dbo.spTodo_GetAllAssined",
+            return sql.LoadData<TodoModel, dynamic>("dbo.spTodos_GetAllAssigned",
                 new { AssignedTo = assignedTo },
                 "Default");
         }
 
         public async Task<TodoModel?> GetOneAssigned(int assignedTo, int todoId)
         {
-            var results = await sql.LoadData<TodoModel, dynamic>("dbo.spTodo_GetOneAssined",
+            var results = await sql.LoadData<TodoModel, dynamic>("dbo.spTodos_GetOneAssigned",
                 new { AssignedTo = assignedTo, TodoId = todoId },
                 "Default");
 
@@ -30,7 +30,7 @@ namespace TodoLibrary.DataAccess
 
         public async Task<TodoModel?> Create(int assignedTo, string task)
         {
-            var results = await sql.LoadData<TodoModel, dynamic>("dbo.spTodo_Create",
+            var results = await sql.LoadData<TodoModel, dynamic>("dbo.spTodos_Create",
                 new { AssignedTo = assignedTo, Task = task },
                 "Default");
 
@@ -40,7 +40,7 @@ namespace TodoLibrary.DataAccess
 
         public Task UpdateTask(int assignedTo, int todoId, string task)
         {
-            return sql.SaveData<dynamic>("dbo.spTodo_UpdateTask",
+            return sql.SaveData<dynamic>("dbo.spTodos_UpdateTask",
                 new { AssignedTo = assignedTo, TodoId = todoId, Task = task },
                 "Default");
         }
@@ -48,14 +48,14 @@ namespace TodoLibrary.DataAccess
 
         public Task CompleteTodo(int assignedTo, int todoId)
         {
-            return sql.SaveData<dynamic>("dbo.spTodo_CompleteTodo",
+            return sql.SaveData<dynamic>("dbo.spTodos_CompleteTask",
                 new { AssignedTo = assignedTo, TodoId = todoId },
                 "Default");
         }
 
         public Task Delete(int assignedTo, int todoId)
         {
-            return sql.SaveData<dynamic>("dbo.spTodo_Delete",
+            return sql.SaveData<dynamic>("dbo.spTodos_Delete",
                 new { AssignedTo = assignedTo, TodoId = todoId },
                 "Default");
         }

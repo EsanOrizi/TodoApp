@@ -37,7 +37,7 @@ namespace TodoApi.StartupConfig
             });
 
 
-            builder.Services.AddAuthentication("bearer")
+            builder.Services.AddAuthentication("Bearer")
                 .AddJwtBearer(opts =>
                 {
                     opts.TokenValidationParameters = new()

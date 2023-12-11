@@ -32,7 +32,7 @@ namespace TodoLibrary.DataAccess
 
         }
 
-        public Task SaveData<T>(
+        public async Task SaveData<T>(
             string storedProcedure,
             T parameters,
             string connectionStringName)
@@ -41,7 +41,7 @@ namespace TodoLibrary.DataAccess
 
             using IDbConnection connection = new SqlConnection(connectionString);
 
-            return connection.ExecuteAsync(
+            await connection.ExecuteAsync(
                 storedProcedure,
                 parameters,
                 commandType: CommandType.StoredProcedure);
